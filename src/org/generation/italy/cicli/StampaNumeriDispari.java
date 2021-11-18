@@ -4,41 +4,68 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class StampaNumeriDispari {
-	
+
 	public static void main(String[] args) {
-		
-		//Creare un array di lunghezza n stabilita dall’utente (quindi dobbiamo interagire con l’utente tramite console)
-		
-		
-		
+
+
 		System.out.println("stabilisci la lunghezza: ");
 		Scanner scanner = new Scanner (System.in) ;	
-		
+
 		int lunghezza = scanner.nextInt();	
-		System.out.println("Creo un array lungo " + lunghezza + " con numeri causali: ");	
-		
-		int[] n = new int[lunghezza];
-		
-		
+		String s = "";
+		String listaInt = "";
+		String listaIntOdd = "";
+
+
+		int[] n = new int[lunghezza];		
+		int oddN = 0;
+
+		int sum = 0;
+
 		for(int i=0; i<n.length; i++ ) {		
+
+			Random randomGenerator = new Random();
+			int max = 100;
+			int numeroRandom = randomGenerator.nextInt(max);		
+			n[i] = numeroRandom;
 			
-		//Popolarlo con numeri interi casuali compresi tra 0 e 100 (0 incluso, 100 escluso)
-		//Scorrere gli elementi  dell’array e stampare a video soltanto i numeri dispari
-		
-		Random randomGenerator = new Random();
-		int max = 100;
-		int var = randomGenerator.nextInt(max);
-		
-		int numeriRandom = randomGenerator.nextInt(max);		
-		n[i] = numeriRandom;		
+			listaInt += n[i] + " \n";
+			
+
+			if(n[i] % 2 !=0) {				
+				oddN++;
+				listaIntOdd += n[i] + " \n";
+			}						
 		}
-		
+	
+		int[] oddArr = new int[oddN];
+		int k = 0;
+
 		for(int j=0; j<n.length; j++) {
+
 			
-			if(n[j] % 2 !=0) {
-				System.out.println(n[j]);
-			}			
-		}				
+			
+			if(n[j] % 2 !=0) {	
+				oddArr[k] = n[j];
+				k++;
+			}		
+
+			if (n[j] > 10 && n[j] < 50) {
+				sum += n[j];				
+			}
+		}
+
+		s = "Lista dei numeri:\n" + listaInt + "\nLista dei numeri dispari:\n" + listaIntOdd + "\nquantità numeri dispari: " + oddN + "\nquantità numeri pari: " + (lunghezza-oddN) + "\nsomma: " + sum;
+
+
+
+
+
+
+		System.out.println(s);
+
+
+
 		scanner.close();
 	}	
 }
