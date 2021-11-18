@@ -28,16 +28,16 @@ public class StampaNumeriDispari {
 		Random randomGenerator = new Random();
 		int max = 100;
 		int var = randomGenerator.nextInt(max);
-		if(var % 2 == 0) {
-			var++;			
-		}
-	
-		n[i] = var;		
+		
+		int numeriRandom = randomGenerator.nextInt(max);		
+		n[i] = numeriRandom;		
 		}
 		
-		for(int j=0; j<n.length; j++) {	
+		for(int j=0; j<n.length; j++) {
 			
-				System.out.println(n[j]);			
+			if(n[j] % 2 !=0) {
+				System.out.println(n[j]);
+			}			
 		}				
 		scanner.close();
 	}	
